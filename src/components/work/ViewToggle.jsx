@@ -1,14 +1,11 @@
 import React from 'react';
-import { ViewMode } from './types';
 
-const ViewToggle = ({ currentMode, onToggle }) => (
-  <button
-    onClick={onToggle}
+export const ViewToggle = ({ isGalleryView, onClick }) => (
+  <button 
     className="work-view-toggle"
-    aria-label={currentMode === ViewMode.FULLSCREEN ? 'Switch to gallery view' : 'Switch to fullscreen view'}
+    onClick={onClick}
+    aria-label={isGalleryView ? 'Switch to fullscreen view' : 'Switch to gallery view'}
   >
-    {currentMode === ViewMode.FULLSCREEN ? '◇' : '□'}
+    *
   </button>
 );
-
-export default ViewToggle;

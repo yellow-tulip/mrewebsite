@@ -1,49 +1,35 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { ImageTransition } from './types';
+import React from 'react';
 
-const GRID_SIZE = 300; // Size for both width and height
-const GRID_GAP = 24; // Gap between grid items
-
-const GalleryView = ({ images }) => {
-  const containerRef = useRef(null);
-
-  const calculateGridPosition = (index) => {
-    const menuWidth = 200;
-    const padding = 24;
-    const columnsPerRow = Math.floor((window.innerWidth - menuWidth - padding * 2) / (GRID_SIZE + GRID_GAP));
-    
-    const row = Math.floor(index / columnsPerRow);
-    const col = index % columnsPerRow;
-    
-    return {
-      x: menuWidth + padding + col * (GRID_SIZE + GRID_GAP),
-      y: padding + row * (GRID_SIZE + GRID_GAP)
-    };
-  };
-
-  const isLowQuality = (image) => {
-    return image.width < 800 || image.height < 800;
-  };
+export const GalleryView = ({ images = [] }) => {
+  const gridSize = 300;
+  const gap = 20;
+  const columns = 3;
+  const totalWidth = (gridSize * columns) + (gap * (columns - 1));
 
   return (
-    <div
-      ref={containerRef}
-      className="gallery-view"
-    >
-      <div className="gallery-grid">
+    <div className="gallery-view">
+      <div 
+        className="gallery-grid"
+        style={{
+          width: `${totalWidth}px`,
+          margin: '0 auto',
+          position: 'relative'
+        }}
+      >
         {images.map((image, index) => {
-          const position = calculateGridPosition(index);
-          const lowQuality = isLowQuality(image);
-
+          const row = Math.floor(index / 3);
+          const col = index % 3;
+          
           return (
             <div
               key={image.id}
-              className={`gallery-item ${lowQuality ? 'low-quality' : ''}`}
+              className="gallery-item"
               style={{
-                left: position.x,
-                top: position.y,
-                width: GRID_SIZE,
-                height: GRID_SIZE,
+                width: `${gridSize}px`,
+                height: `${gridSize}px`,
+                top: `${row * (gridSize + gap)}px`,
+                left: `${col * (gridSize + gap)}px`,
+                position: 'absolute'
               }}
             >
               <div className="image-wrapper">
@@ -53,10 +39,9 @@ const GalleryView = ({ images }) => {
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
+                    objectFit: 'cover'
                   }}
                 />
-                {lowQuality && <div className="halo-effect" />}
               </div>
             </div>
           );
@@ -65,5 +50,3 @@ const GalleryView = ({ images }) => {
     </div>
   );
 };
-
-export default GalleryView;
