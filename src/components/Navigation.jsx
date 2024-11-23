@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Navigation = () => (
   <>
     <nav className="nav">
       <ul>
-        <li><a href="/">home</a></li>
-        <li><a href="/about">about</a></li>
-        <li><a href="/work">work</a></li>
-        <li><a href="/contact">contact</a></li>
+        <li><Link to="/">home</Link></li>
+        <li><Link to="/about">about</Link></li>
+        <li><Link to="/work">work</Link></li>
+        <li><Link to="/contact">contact</Link></li>
       </ul>
     </nav>
     <div className="asterisk">*</div>
