@@ -5,11 +5,20 @@ import { WorkPage } from './components/work/WorkPage';
 import { AmbientSoundscape } from './components/AmbientSoundscape';
 
 export default function App() {
+  const path = window.location.pathname;
+  
+  const renderContent = () => {
+    if (path === '/work') {
+      return <WorkPage />;
+    }
+    return null;
+  };
+
   return (
     <>
       <GlobalStyles />
       <Navigation />
-      <WorkPage />
+      {renderContent()}
       <AmbientSoundscape />
     </>
   );

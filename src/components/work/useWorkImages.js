@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
 
-// Images arranged in pairs as shown in the layout
+// Images arranged in order shown, 3 per row
 const imageFiles = [
-  'IMG_0988.JPG',       // Night light
-  'IMG_3822.png',       // Night architecture
-  'IMG_8916.JPEG',      // Window reflection
-  'drafts-06.jpg',      // Orange/red fire
-  'IMG_3829.png',       // Red/warm lighting
-  'image4.png',         // Person on bridge
-  'image3.jpg',         // Monochrome sketch
-  'IMG_0138.jpg',       // Cool minimal
-  'tumblr_130bd78a46ff094048.jpg',  // White fabric
-  'IMG_7183.JPEG'       // Snow texture
+  'cigratte.jpg',      // Row 1
+  'sky.jpg',
+  'glow.jpg',
+  'trainseat.jpg',     // Row 2
+  'thedock.jpg',
+  'snowhill.jpg',
+  'ladyinthetrain.jpg', // Row 3
+  'darkness fire july4.jpg',
+  'cecilia.jpg',
+  'trainppl.jpg',      // Row 4
+  'IMG_3822.png',
+  'IMG_3829.png',
+  'snowprints-2.jpg',  // Row 5
+  'IMG_0138.jpg',
+  'blankets.jpg'
 ];
 
 const loadImage = (src) => {
